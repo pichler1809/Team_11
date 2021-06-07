@@ -1,31 +1,27 @@
-package com.example.justgo.Food
+package com.example.justgo.Destination
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.justgo.Entitys.Destination
 import com.example.justgo.Entitys.Food
 import com.example.justgo.R
 
-
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class MyFoodRecyclerViewAdapter(
-    private var values: ArrayList<Food>
-) : RecyclerView.Adapter<MyFoodRecyclerViewAdapter.ViewHolder>() {
+class DestinationRecyclerViewAdapter(
+        private var values: MutableList<Destination>
+) : RecyclerView.Adapter<DestinationRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_food, parent, false)
+                .inflate(R.layout.list_item_destination, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item._foodName
+        holder.idView.text = item.name_
     }
 
     override fun getItemCount(): Int = values.size
@@ -39,7 +35,7 @@ class MyFoodRecyclerViewAdapter(
         }
     }
 
-    fun setItems(list : ArrayList<Food>){
+    fun setItems(list : MutableList<Destination>){
         values = ArrayList()
         values.addAll(list)
     }
