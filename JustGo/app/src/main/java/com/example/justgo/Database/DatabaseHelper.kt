@@ -80,7 +80,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
     fun addPictureorVideo(picture: Picture, trip:Trip):Long{
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(KEY_URI, picture.uri_.path)
+        contentValues.put(KEY_URI, picture.uri_)
         contentValues.put(KEY_PICTUREVIDEOTYPE, picture.type_.name)
         contentValues.put(FOREIGNKEY_TRIPID,trip.getID())
 
@@ -111,7 +111,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
                     uri_path = cursor.getString(cursor.getColumnIndex(KEY_URI))
                     type = cursor.getString(cursor.getColumnIndex(KEY_PICTUREVIDEOTYPE))
                     //ID = cursor.getInt(cursor.getColumnIndex("id"))
-                    val picture = Picture(Uri.fromFile(File(uri_path)), PictureVideoType.valueOf(type))
+                    val picture = Picture(uri_path, PictureVideoType.valueOf(type))
                     pictureVideoList.picturesAndVideos.add(picture)
                 } while (cursor.moveToNext())
             }

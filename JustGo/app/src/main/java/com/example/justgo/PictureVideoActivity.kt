@@ -263,7 +263,7 @@ class PictureVideoActivity : AppCompatActivity() {
 
                 pictureVideoInformation.addPictureVideo(destFile.toUri(), selectedType)
                 var databaseHelper = DatabaseHelper(this)
-                databaseHelper.addPictureorVideo(Picture(destFile.toUri(),selectedType),trip)
+                databaseHelper.addPictureorVideo(Picture(destFile.toUri().toString(),selectedType),trip)
                 currentPictureVideoList= pictureVideoInformation.getPicturesVideosList(selectedType)
                 (choosenGridView.adapter as PictureVideoAdapter).notifyDataSetChanged()
                 choosenGridView.invalidateViews()
